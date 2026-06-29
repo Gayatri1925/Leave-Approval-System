@@ -316,7 +316,6 @@ This project is provided for educational and learning purposes to demonstrate wo
 
 **Project Developer:** Gayatri Pinakana
 
-Contributions, feedback, and suggestions from mentors, faculty members, and the developer community are greatly appreciated.
 
 ---
 
