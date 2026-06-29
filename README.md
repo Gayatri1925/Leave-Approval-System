@@ -159,3 +159,175 @@ Log in using your administrator credentials.
 #### 10. Validate the Workflow
 
 - Ensure the complete leave approval process functions correctly from request submission to manager approval and employee notification.
+
+## Usage
+
+Follow these steps to use the Leave Approval Management System:
+
+### 1. Submit a Leave Request
+- Log in to the ServiceNow instance.
+- Open the **Leave Request** application.
+- Click **New** and fill in the required details, including the employee name, manager, leave type, start date, end date, and reason.
+- Submit the leave request.
+
+### 2. Manager Reviews the Request
+- The assigned manager receives the leave request for approval.
+- The manager opens the approval request from the **My Approvals** module.
+- The manager reviews the leave details and chooses to **Approve** or **Reject** the request.
+
+### 3. Automatic Workflow Execution
+- The Flow Designer workflow processes the manager's decision.
+- The leave request status is automatically updated based on the approval outcome.
+
+### 4. Employee Notification
+- The employee receives an automated email informing them whether the leave request has been approved or rejected.
+
+### 5. Track Leave Requests
+- Employees and administrators can view the current status and history of leave requests from the application records.
+
+## System Architecture
+
+```text
++------------------+
+|    Employee      |
++------------------+
+         |
+         | Submit Leave Request
+         v
++---------------------------+
+| Leave Request Form        |
+| (Custom Table & Form)     |
++---------------------------+
+         |
+         | Triggers
+         v
++---------------------------+
+|      Flow Designer        |
+|  (Automation Workflow)    |
++---------------------------+
+         |
+         | Sends Approval
+         v
++---------------------------+
+|         Manager           |
+|    Reviews Request        |
++---------------------------+
+      |              |
+      | Approve      | Reject
+      |              |
+      +------+-------+
+             |
+             v
++---------------------------+
+| Update Leave Status       |
+| (Approved / Rejected)     |
++---------------------------+
+             |
+             | Sends Notification
+             v
++---------------------------+
+|   Email Notification      |
++---------------------------+
+             |
+             v
++---------------------------+
+|        Employee           |
+| Receives Status Update    |
++---------------------------+
+```
+
+### Architecture Description
+
+The Leave Approval Management System follows a workflow-driven architecture in which an employee submits a leave request through a custom ServiceNow form. The request is stored in a custom table and automatically triggers a Flow Designer workflow. The workflow sends an approval request to the assigned manager, who reviews and either approves or rejects the request. Based on the manager's decision, the system updates the leave request status and sends an automated email notification to the employee, ensuring a seamless and efficient leave management process.
+
+## Configuration
+## Key Configuration Areas
+
+- **Application Settings:** Configure the scoped application and assign the required user roles.
+- **Custom Table:** Define the Leave Request table with fields for employee, manager, leave details, and status.
+- **Forms:** Design and configure the Leave Request form for employee submissions.
+- **Approval Workflow:** Configure Flow Designer to automate the manager approval process.
+- **Approval Rules:** Define the approval logic to route requests to the assigned manager.
+- **Email Notifications:** Configure automated email alerts for leave approval and rejection.
+- **User Roles:** Assign appropriate permissions to employees, managers, and administrators.
+- **Status Management:** Configure automatic status updates based on the manager's approval decision.
+
+## Testing
+
+Comprehensive test cases and validation scenarios are included to ensure the Leave Approval Management System functions correctly. Test coverage includes:
+
+- **Form Validation:** Verify that employees can submit leave requests with valid and complete information.
+- **Approval Workflow Testing:** Test the Flow Designer workflow for manager approval and rejection scenarios.
+- **Email Notification Testing:** Validate that employees receive email notifications after the manager's decision.
+- **End-to-End Testing:** Verify the complete leave request lifecycle from submission to approval/rejection and status update.
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+| Issue | Solution |
+|--------|----------|
+| Leave request is not triggering the workflow. | Verify that the Flow Designer trigger is active and configured correctly. |
+| Manager does not receive the approval request. | Ensure the Manager field is populated and the approval action is configured properly. |
+| Approval does not update the leave request status. | Check the flow logic and confirm the status update action is executed after approval or rejection. |
+| Email notifications are not sent. | Verify that email notifications are enabled and configured correctly in the flow. |
+| **My Approvals** is empty for the manager. | Confirm the user has the required roles and that the approval is assigned to the correct manager. |
+| Users cannot access the application. | Verify that the appropriate roles and permissions have been assigned to the user. |
+
+## Support & Maintenance
+
+- **Documentation:** Refer to the **Project Documentation** section for detailed implementation and configuration guides.
+- **Demonstration:** Review the **Project Demonstration** section to understand the complete leave request and approval workflow.
+- **Issue Reporting:** Report bugs, issues, or enhancement requests through the project's GitHub repository.
+
+---
+
+## Future Enhancements
+
+- Implement multi-level leave approval workflows.
+- Add leave balance calculation and tracking.
+- Develop an administrative dashboard with leave analytics and reports.
+- Integrate with HR systems for employee data synchronization.
+- Enable mobile access through the ServiceNow Mobile App.
+- Add calendar integration for leave scheduling and reminders.
+- Implement role-based dashboards and advanced reporting features.
+
+---
+
+## Contributing
+
+To contribute to this project:
+
+1. Fork the repository.
+2. Create a new feature branch.
+3. Make your changes and test them thoroughly.
+4. Commit your changes with meaningful commit messages.
+5. Submit a pull request with a detailed description of your changes.
+
+---
+
+## License
+
+This project is provided for educational and learning purposes to demonstrate workflow automation using the ServiceNow platform.
+
+---
+
+## Authors & Contributors
+
+**Project Developer:** Gayatri Pinakana
+
+Contributions, feedback, and suggestions from mentors, faculty members, and the developer community are greatly appreciated.
+
+---
+
+## Acknowledgments
+
+This project demonstrates the implementation of ServiceNow best practices for automating employee leave request and approval workflows. Special thanks to the ServiceNow Developer Program, official documentation, mentors, and learning resources that supported the successful development of this project.
+
+---
+
+**Last Updated:** June 2026
+
+**Version:** 1.0
+
+**Repository:** Leave-Approval-Management-System-ServiceNow
