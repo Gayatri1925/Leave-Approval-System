@@ -330,4 +330,4 @@ This project demonstrates the implementation of ServiceNow best practices for au
 
 **Version:** 1.0
 
-**Repository:** Leave-Approval-Management-System-ServiceNow
+**Repository:** [Leave Approval Management System](https://github.com/Gayatri1925/Leave-Approval-System)
